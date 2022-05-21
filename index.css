@@ -1,65 +1,201 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap');
-.wrapper {
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "work sans", sans-serif;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
-    flex-flow: row wrap;
-    text-align: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: url(bg.jpg)no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
-.wrapper>* {
-    padding: 10px;
-    margin: 10px;
-    flex: 1 100%;
-    border-radius: 10px;
+header{
+position: relative;
+top: 0;
+width: 100%;
+padding: 30px 100px;
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
-.header {
-    background: tomato;
-    height: 120px;
-    font-family: Jost;
-    font-weight: 600;
-    font-size: larger;
+header .logo{
+    position: relative;
+    letter-spacing: 1px;
 }
 
-.footer {
-    background: lightblue;
-    height: 80px;
+header .navigation a{
+    color: #000;
+    text-decoration: none;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 2px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+    transition-property: background;
 }
 
-.main {
-    text-align: left;
-    background: dodgerblue;
-    height: 300px;
+header .navigation a:not(:last-child){
+    margin-right: 30px;
+}
+
+header .navigation a:hover{
+    background: #fff;
+}
+
+.content{
+    max-width: 650px;
+    margin: 60px 100px;
+}
+
+.content .info h2{
+    color: #225888;
+    font-size: 55px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.content .info p{
     font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 40px;
 }
 
-.aside1 {
-    background: silver;
+.content .info-btn{
+    color: #60C3F5;
+    background: #225888;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+    transition-property: inherit;
+
 }
 
-.aside2 {
-    background: lightsalmon;
+.content .info-btn:hover{
+    background: #477196;
 }
 
-@media all and (min-width: 800px) {
-    .main {
-        flex: 3;
-    }
-    .aside1 {
-        order: 1;
-    }
-    .aside2 {
-        order: 2;
-    }
-    .main {
-        order: 2;
-    }
-    .footer {
-        order: 4;
-    }
+.media-icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
 
-@media all and (min-width: 600px) {
-    .aside {
-        flex: 1;
+.media-icons a{
+    position: relative;
+    color: #fff;
+    font-size: 25px;
+}
+
+.media-icons a:not(:last-child){
+    margin-right: 60px;
+}
+
+.media-icons a:hover{
+    transform: scale(1.5);
+    transition: 0.5s;
+}
+
+label{
+    display: none ;
+}
+
+#check{
+    z-index: 3;
+    display: none;
+}
+
+/* responsive styles */
+
+@media (max-width: 960px){
+    header .navigation{
+        display: none;
+    }
+
+    label{
+        display: block;
+        font-size: 25px;
+        cursor: pointer;
+        transition: 0.3s;
+        transition-property: color;
+    }
+    
+    label:hover{
+        color: #fff;
+    }
+
+    label .close-btn{
+        display: none;
+    }
+
+    #check:checked ~ header .navigation{
+        z-index: 2;
+        position: fixed;
+        background: #4db1c2ce;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #check:checked ~ header .navigation a{
+        font-weight: 400;
+        margin-right: 0;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-bottom: 50px;
+        letter-spacing: 2px;
+    }
+
+    #check:checked ~ header label .fa-bars{
+        display: none;
+    }
+
+    #check:checked ~ header label .fa-xmark{
+        z-index: 2;
+        display: block;
+        position: fixed;
+    }
+
+    label .fa-bars{
+        position: absolute;
+    }
+
+    label .fa-xmark{
+        position: absolute;
+        display: none;
+    }
+
+    header .logo{
+        position: absolute;
+        bottom: -30%;
+    }
+
+    .content .info h2{
+        font-size: 45px;
+        line-height: 50px;
+    }
+
+    .content .info p{
+        font-size: 14px;
     }
 }
